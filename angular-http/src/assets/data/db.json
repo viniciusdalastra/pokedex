@@ -1,0 +1,24 @@
+{
+  "pokemons": [
+    {
+      "id": 1,
+      "nome": "Charmander",
+      "imagem": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png"
+    },
+    {
+      "id": 2,
+      "nome": "Pikachu",
+      "imagem": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
+    },
+    {
+      "id": 3,
+      "nome": "Bulbasaur",
+      "imagem": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
+    },
+    {
+      "imagem": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png",
+      "nome": "Charizard",
+      "id": 4
+    }
+  ]
+}

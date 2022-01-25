@@ -1,0 +1,22 @@
+.container {
+    margin-top: 30px;
+}
+
+.add-pokemon {
+    margin-bottom: 30px;
+}
+
+.list-pokemon {
+    margin-bottom: 50px;
+}
+
+.btn-add-pokemon {
+    margin-right: 10px;
+}
+
+.imagem-pokemon{
+    max-width:200px;
+    max-height:150px;
+    width: auto;
+    height: auto;
+}
