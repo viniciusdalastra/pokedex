@@ -6,48 +6,52 @@
 <div class="container">
   <div class="card list-pokemon">
     <h5 class="card-header">Lista de Pokemons! </h5>
-    <div class="card-body">
-      <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Identificado do Pokemon</th>
-              <th scope="col">Nome do Pokemon</th>
-              <th scope="col">Foto do Pokemon</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let pokemon of pokemons">
-              <td>{{pokemon.id}}</td>
-              <td>{{pokemon.nome}}</td>
-              <td><img class="imagem-pokemon" src="{{pokemon.imagem}}" alt="{{pokemon.nome}}"><img></td>
-              <td>
+    <div class="card-group">
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col col-pokemon" *ngFor="let pokemon of pokemons">
+          <div class="card card-pokemon">
+            <img class="card-img-top imagem-pokemon" src="{{pokemon.imagem}}" alt="{{pokemon.nome}}"><img>
+            <div class="card-body">
+              <h5 class="card-title"><span>{{pokemon.id}} - {{pokemon.nome}}</span></h5>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted button-card">
                 <button type="button" class="btn btn-warning btn-sm" (click)="editPokemon(pokemon)">Alterar</button>
-                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deletePokemon(pokemon)">Remover</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                <button type="button" class="btn btn-danger btn-sm ml-1"
+                  (click)="deletePokemon(pokemon)">Remover</button>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="card add-pokemon">
-      <h5 class="card-header">Criar/Alterar Pokemon</h5>
-      <div class="card-body">
-          <form id="add-form" (ngSubmit)="f.form.valid && savePokemon(f)" #f="ngForm" novalidate>
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" [(ngModel)]="pokemon.nome" id="nome" name="nome" #nome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" placeholder="Digite o Nome do Pokemon!">
-                <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
-                    <div *ngIf="nome.errors?.['required']">Nome é obrigatório!</div>
-                </div>
+    <h5 class="card-header">Criar/Alterar Pokemon</h5>
+    <div class="card-body">
+      <form id="add-form" (ngSubmit)="f.form.valid && savePokemon(f)" #f="ngForm" novalidate>
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" [(ngModel)]="pokemon.nome" id="nome" name="nome" #nome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" placeholder="Digite o Nome do Pokemon!">
+          <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+            <div *ngIf="nome.errors?.['required']">Nome é obrigatório!</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="imagem">URL da Imagem</label>
+          <input type="url" [(ngModel)]="pokemon.imagem" id="imagem" name="imagem" #imagem="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && imagem.invalid }" pattern="http?://.+" placeholder="Digite o link da Imagem!">
+            <div *ngIf="f.submitted && imagem.invalid" class="invalid-feedback">
+              <div *ngIf="imagem.errors?.['required']">Imagem é obrigatória!</div>
+              <div *ngIf="imagem.errors?.['pattern']">Deve ser informada uma URL válida!</div>
             </div>
-            <div class="form-group">
-              <label for="imagem">Imagem</label>
-              <input type="text" [(ngModel)]="pokemon.imagem" id="imagem" name="imagem" #imagem="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && imagem.invalid }" placeholder="Digite o link da Imagem!">
-            </div>  
-            <button type="submit" class="btn btn-primary btn-add-pokemon">Confirma!</button>
-            <button type="reset" class="btn btn-secondary btn-add-pokemon" (click)="cleanForm(f)">Cancela!</button>
-          </form>
-      </div>
+        </div>
+        <div class="button-crud">
+          <button type="submit" class="btn btn-primary btn-add-pokemon">Confirma!<i
+              class="fas fa-check-square"></i></button>
+          <button type="reset" class="btn btn-secondary btn-add-pokemon" (click)="cleanForm(f)">Cancela!</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>

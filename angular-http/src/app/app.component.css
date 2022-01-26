@@ -14,9 +14,34 @@
     margin-right: 10px;
 }
 
+.card-pokemon{
+    width: 320px;
+    height:  420px;
+    display: flex;
+    justify-content: center;
+}
+
 .imagem-pokemon{
-    max-width:200px;
-    max-height:150px;
+    max-width: 300px;
+    max-height: 300px;
     width: auto;
     height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.button-card{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.button-crud {
+    display: flex;
+    justify-content: end;
+    align-content: center;
+}
+
+.col-pokemon{
+    flex-grow: 0;
 }
